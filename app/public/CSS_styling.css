@@ -1,0 +1,16 @@
+/*  Assignment: Friend Finder 
+    Programmer: Sohail Zafar 
+    File: apiRoutes.js
+    This application asks users questions and matches users with other users who answered the survey similarly.
+    This file is incomplete. Will complete it soon.
+  */
+ /* CSS styling for survey.html */
+
+ body {
+     margin-left: 30px;
+     margin-right: 30px;
+    background-color: darkgrey; }
+
+button {
+    margin: 10px;
+}
