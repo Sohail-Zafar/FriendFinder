@@ -163,6 +163,9 @@
       <footer class="page-footer text-center"><h3><strong>Friend Finder App</strong></h3></footer> 
 
       <script type="text/javascript">
+      // Global variables
+      var friendNameMatch;
+      var friendPhotoMatch;
 
       // Submit Button on-click event. Use Jquery to gather users response to questions and store them in a variable userInput
       $('#submit').on('click', function(event) {
@@ -187,8 +190,9 @@
         };
         // Send userInput to server.
         $.post('/api/friends', userInput)
-      		.then(function(data) {
-        
+      		.then(function(returnData) {
+            friendNameMatch.returnData.name;
+            friendPhotoMatch.returnData.photo;
           });
        });
 
