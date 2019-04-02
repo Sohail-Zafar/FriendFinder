@@ -1,7 +1,8 @@
 // Assignment: Friend Finder
 // Programer: Sohail Zafar
 // File: server.js
-// This file is incomplete. Will complete it soon.
+// This is the server.js code for the application. It listens for request from
+// the client and directs request to the routes folder.
 
 var express = require("express");
 var path = require("path");
