@@ -15,10 +15,16 @@
 
     <!-- Bootstrap plugin -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     
     <link rel="stylesheet" href="./CSS_styling.css">
 </head>
 <body>
+  <div class = container>
     <h1>Survey Questions</h1>
     <!-- Get information from user, name and link to photo -->
     <p> 
@@ -162,6 +168,19 @@
       <!-- Footer -->
       <footer class="page-footer text-center"><h3><strong>Friend Finder App</strong></h3></footer> 
 
+      <!-- Bootstrap Modal - Displays the closest friend match after user submit information -->
+
+      <div id = "modal" class = "modal">
+        <div class ="modal-content">
+          <h3>New Friend</h3>
+          <div class= "divider"></div>
+          <h4 id = "newFriendName"></h4>
+          <img id = "newFriendImage" width="550" src="">
+        </div>
+      </div>
+    </div>
+
+
       <script type="text/javascript">
       // Global variables
       var friendNameMatch;
@@ -189,10 +208,14 @@
           ]
         };
         // Send userInput to server.
-        $.post('/api/friends', userInput)
-      		.then(function(returnData) {
+        $.post("/app/routing/apiRoutes", userInput,function(returnData) {
             friendNameMatch = returnData.friendNameMatch;
-            friendImageMatch.returnData.friendImageMatch;
+            friendImageMatch = returnData.friendImageMatch;
+          
+          // Display closest friend match in Modal
+            $("#newFriendName").html(friendNameMatch);
+            $("#newFriendImage").attr("src",friendImageMatch);
+            $("#modal").modal('open');
           });
        });
 

@@ -4,19 +4,19 @@
 //  This application asks users questions and matches users with other users who answered the survey similarly.
 //  
 
-var friendData = require("./data/friends");
+var friendData = require("../data/friends");
 // Global variables
 var newFriendInput;
 var bestMatchName = "";
 var bestMatchImage = "";
 var differenceInAllScores = 9999;
 
-module.exports = function(app){
+module.exports = function(app) {
 
 //  Post route. Receives data form client and compares with data stored on an array. Then returns the best match name 
 //  and photo. Last the function adds new users data to the the friendData[]. 
-app.post('api/friends', function(req,res){
-    if (friendData) {
+app.post("/app/routing/apiRoutes", function(req,res){
+    if (req) {
       newFriendInput = req.body;
       
       compareScores();
@@ -39,13 +39,14 @@ function compareScores() {
 
     for ( var j = 0 ; j < newFriendScore.length; j++){
       
-      differenceInScore = Math.abs(friendData[i].scores[j] - newFriendScore[j]);
+      differenceInScore += Math.abs(friendData[i].scores[j] - newFriendScore[j]);
       
       if ( differenceInScore < differenceInAllScores){
-       
+        console.log(friendData[i].name);
+
         differenceInAllScores = differenceInScore;
-        bestMatchName = friendData.name[i];
-        bestMatchImage = friendData.image[i];
+        bestMatchName = friendData[i].name;
+        bestMatchImage = friendData[i].image;
       }
     }
   }

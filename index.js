@@ -7,4 +7,4 @@
   module.exports = friends;
 
   var oldFriend = [];
-  var newFriend = {}
+  var newFriend = [];
